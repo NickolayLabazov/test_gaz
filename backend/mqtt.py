@@ -25,12 +25,16 @@ class Mqtt():
         print(msg.topic+" "+str(msg.payload))  
         geolocation.set_geo(str(msg.payload))        
 
-    def start(self):         
-        client = mqtt.Client()
-        client.on_connect = self.on_connect
-        client.on_message = self.on_message
-        client.on_disconnect = self.on_disconnect
-        client.username_pw_set('mqtt', password='mqtt_user')
-        client.tls_set("ca.crt", tls_version=ssl.PROTOCOL_TLSv1_2)        
-        client.connect(self.host, self.port, self.timeout)
-        client.loop_forever() 
+    def start(self):
+        try:         
+            client = mqtt.Client()
+            client.on_connect = self.on_connect
+            client.on_message = self.on_message
+            client.on_disconnect = self.on_disconnect
+            client.username_pw_set('mqtt', password='mqtt_user')
+            client.tls_set("ca.crt", tls_version=ssl.PROTOCOL_TLSv1_2)        
+            client.connect(self.host, self.port, self.timeout)
+            client.loop_forever()
+        except:
+            print('error connect')
+            self.start() 
