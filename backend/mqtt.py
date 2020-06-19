@@ -25,11 +25,7 @@ class Mqtt():
         print(msg.topic+" "+str(msg.payload))  
         geolocation.set_geo(str(msg.payload))        
 
-    def start(self):       
-        
-        geolocation.set_geo(str(b"('356060081186999', 135581984, 200046496, 218)"))
-        geolocation.set_geo(str(b"('232323', 177439328, 192671600, 218)"))
-        
+    def start(self):         
         client = mqtt.Client()
         client.on_connect = self.on_connect
         client.on_message = self.on_message
