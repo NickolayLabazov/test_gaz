@@ -10,9 +10,9 @@
   pip install -r requirements.txt
 * запустить файл server.py  
 * Перейти в папку frontend
-* выполнить:
-  npm install
-  npm start
+* выполнить:  
+  npm install  
+  npm start  
 * приложение откроется по адресу http://localhost:5000/
 
 
